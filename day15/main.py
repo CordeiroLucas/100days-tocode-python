@@ -1,4 +1,4 @@
-from CoffeeMachine import *
+from day15.library import *
 
 machine = CoffeeMachine(300, 200, 100)
 

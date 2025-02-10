@@ -1,5 +1,3 @@
-import decimal
-
 class CoffeeMachine:
     MENU = {
         'expresso':{
@@ -36,7 +34,7 @@ class CoffeeMachine:
     }
     resources:dict
     total_cups:int
-    balance:decimal
+    balance:float
 
     def __init__(self, water, milk, coffee):
         self.resources = {
@@ -53,7 +51,7 @@ class CoffeeMachine:
             self.resources[ingredient] -= asked_coffee['ingredients'][ingredient]
         print(f"Here is your {coffee} ☕ Enjoy!")
     
-    def __getPayment__(self, coffee:str, payment:decimal):
+    def __getPayment__(self, coffee:str, payment:float):
         asked_coffee = self.MENU[coffee]
          
         if payment >= asked_coffee['cost']:
@@ -76,7 +74,7 @@ class CoffeeMachine:
                 return False
         return True
 
-    def buy(self, coffee:str, payment:decimal):
+    def buy(self, coffee:str, payment:float):
         if self.__getPayment__(coffee, payment) and self.isResourcesSufficient(coffee):
             self.__make__(coffee)
             self.total_cups += 1
@@ -95,3 +93,12 @@ class CoffeeMachine:
         
         print("Refilled, now:\n")
         self.report()
+    
+def coin_counter(quarter, dime, nickel, penny):
+    total_balance = 0
+    total_balance += quarter*0.25
+    total_balance += dime*0.1
+    total_balance += nickel*0.05
+    total_balance += penny*0.01
+    return total_balance
+    
