@@ -9,6 +9,8 @@ coins = {
 
 machine = CoffeeMachine(300, 200, 100)
 
+print("COFFEE MACHINE\n")
+
 while True:
     option = input("What would you like? (expresso/latte/cappuccino): ").lower()
 
