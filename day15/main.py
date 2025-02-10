@@ -31,4 +31,4 @@ while True:
 
                     machine.buy(option, coin_counter(quarters, dimes, nickels, pennies))
             except KeyError:
-                print("Opção Inválida!")
+                print("Inválid Option!")
