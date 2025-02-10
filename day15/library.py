@@ -51,13 +51,13 @@ class CoffeeMachine:
             self.resources[ingredient] -= asked_coffee['ingredients'][ingredient]
         print(f"Here is your {coffee} ☕ Enjoy!")
     
-    def __getPayment__(self, coffee:str, payment:float):
+    def __checkTransaction__(self, coffee:str, payment:float):
         asked_coffee = self.MENU[coffee]
          
         if payment >= asked_coffee['cost']:
             if payment > asked_coffee['cost']:
                 change = payment - asked_coffee['cost']
-                print(f"Here is ${change} in change!")
+                print(f"Here is ${change:.2f} in change!")
             self.balance += asked_coffee['cost']
             return True
         
@@ -75,7 +75,7 @@ class CoffeeMachine:
         return True
 
     def buy(self, coffee:str, payment:float):
-        if self.__getPayment__(coffee, payment) and self.isResourcesSufficient(coffee):
+        if self.__checkTransaction__(coffee, payment) and self.isResourcesSufficient(coffee):
             self.__make__(coffee)
             self.total_cups += 1
 
@@ -93,9 +93,9 @@ class CoffeeMachine:
         
         print("Refilled, now:\n")
         self.report()
-    
+
 def coin_counter(quarter, dime, nickel, penny):
-    total_balance = 0
+    total_balance:float = 0
     total_balance += quarter*0.25
     total_balance += dime*0.1
     total_balance += nickel*0.05
