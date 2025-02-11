@@ -11,7 +11,9 @@ machine = CoffeeMachine(300, 200, 100)
 
 print("COFFEE MACHINE\n")
 
-while True:
+is_machine_ON = True
+
+while is_machine_ON:
     option = input("What would you like? (expresso/latte/cappuccino): ").lower()
 
     match option:
@@ -20,7 +22,7 @@ while True:
         case 'refill':
             machine.refill(0,0,0)
         case 'off':
-            break
+            is_machine_ON = False
         case _:
             try:
                 if machine.isResourcesSufficient(option):
