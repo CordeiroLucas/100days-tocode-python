@@ -1,10 +1,8 @@
-class User:
-    username:str
-    password:str
-    def __init__(self, username, password):
-        self.username = username
-        self.password = password
-    
-user1 = User("Luxka", "1234")
+from question_model import Question
+from data import question_data
 
-print(user1.username)
+question_bank = []
+for question in question_data:
+	question_bank.append(Question(question["text"], question["answer"]))
+
+print(question_bank[0].text)
