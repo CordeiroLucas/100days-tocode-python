@@ -20,7 +20,7 @@ while is_machine_ON:
         case 'report':
             machine.report()
         case 'refill':
-            machine.refill(0,0,0)
+            machine.refill(300,200,100)
         case 'off':
             is_machine_ON = False
         case _:
