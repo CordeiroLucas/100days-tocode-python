@@ -12,13 +12,10 @@ def draw_shape(num_sides):
 		timmy_turtle.right(angle)
 
 
-num_shapes = 5
-num_sides = 4
 
-for _ in range(num_shapes):
-	draw_shape(num_sides)
+for shape_side_n in range(3,11):
+	draw_shape(shape_side_n)
 	timmy_turtle.color(random(), random(), random())
-	num_sides+=1	
 
 	
 screen = Screen()
