@@ -1,3 +1,5 @@
+# TODO: Make the turtle draw the hirst painting
+
 import turtle as t
 import colorgram as c
 import random as r
