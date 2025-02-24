@@ -1,22 +1,47 @@
-from turtle import Turtle, Screen
+import turtle as t
+import colorgram as c
+import random as r
 
-timmy_turtle = Turtle()
-timmy_turtle.shape("turtle")
-timmy_turtle.color("red")
+tim = t.Turtle()
+tim.speed("fastest")
 
-timmy_turtle.speed(40)
+total_colors = 10
+colors = c.extract('image.jpeg', total_colors)
 
-number = 424
-for n in range(number):
-    if n%2==0:
-        timmy_turtle.color("green")
-    else:
-        timmy_turtle.color("red")
+def draw_circle():
+    color = r.choice(colorlist)
+    tim.pendown()
+    tim.dot(20, color)
+    tim.penup()
 
-    timmy_turtle.forward(400)
-    timmy_turtle.left(179)
+# colorlist = []
+# for color in colors:
+#     colorlist.append(tuple(color.rgb))
+
+colorlist = [(199, 162, 100), (62, 91, 128), (140, 170, 192), (139, 90, 48), (219, 206, 119), (135, 27, 52)]
+
+size = 10
+
+sqr_size = size * -22.5 
+
+tim.teleport(sqr_size, sqr_size)
+
+screen = t.Screen()
+screen.colormode(255)
 
 
 
-screen = Screen()
+for _ in range(size):
+    for _ in range(size):
+        draw_circle()
+        tim.forward(50)
+    
+    tim.teleport(sqr_size, tim.pos()[1] + 50)
+
+
+
+
+
+
+
 screen.exitonclick()
