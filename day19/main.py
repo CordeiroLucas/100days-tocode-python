@@ -1,23 +1,43 @@
 from turtle import Turtle, Screen
+from random import choice
 
-tim = Turtle()
 screen = Screen()
+screen.setup(width=500, height=400)
+user_bet = screen.textinput(title="Make your bet", prompt="Which turtle will win the race? Enter a color: ")
 
-def move_fowards():
-    tim.forward(10)
+colors = ["red", "green", "blue", "yellow", "brown"]
 
-def move_backwards():
-    tim.back(10)
+speed = 5
+total = 5
+turtles:list[Turtle] = []
+for n in range(total):
+	turtles.append(Turtle())
 
-def turn_left():
-    tim.left(90)
+	turtles[n].color(colors[n])
+	turtles[n].shape("turtle")
+	turtles[n].penup()
+	turtles[n].speed(speed)
 
-def turn_right():
-    tim.right(90)
+	# print(f"{n} - ", turtles[n].color())
 
-screen.listen()
-screen.onkey(key="w", fun=move_fowards)
-screen.onkey(key="s", fun=move_backwards)
-screen.onkey(key="a", fun=turn_left)
-screen.onkey(key="d", fun=turn_right)
-screen.exitonclick() 
+	y =  -(screen.window_height()/total) + n * screen.window_height()/total - 75
+
+	turtles[n].goto(-230, y)
+
+running = True
+while running:
+	selected:Turtle = choice(turtles)
+	selected.forward(10)
+
+	if selected.pos()[0] == 250:
+		running = False
+		break
+
+# print(user_bet)
+if selected.color()[0] == user_bet:
+	print("Ganhou")
+else:
+	# print(selected.color()[0])
+	print("Perdeu")
+
+screen.exitonclick()
