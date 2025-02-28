@@ -11,16 +11,17 @@ speed = 5
 total = 5
 turtles:list[Turtle] = []
 for n in range(total):
-	turtles.append(Turtle())
+	new_turtle = Turtle()
 
-	turtles[n].color(colors[n])
-	turtles[n].shape("turtle")
-	turtles[n].penup()
-	turtles[n].speed(speed)
+	new_turtle.color(colors[n])
+	new_turtle.shape("turtle")
+	new_turtle.penup()
+	new_turtle.speed(speed)
+	turtles.append(new_turtle)
 
 	# print(f"{n} - ", turtles[n].color())
 
-	y =  -(screen.window_height()/total) + n * screen.window_height()/total - 75
+	y =  -100 + n * 50
 
 	turtles[n].goto(-230, y)
 
