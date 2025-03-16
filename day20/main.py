@@ -1,29 +1,32 @@
-from library import *
 from turtle import Turtle, Screen
-from random import randint, choice
-
-#testing
+import time
+from Snake import *
 
 screen = Screen()
-width = 500
-height = 400
-screen.setup(width, height)
+screen.setup(width=600, height=600)
+screen.bgcolor("black")
+screen.title("My Snake Game")
+screen.tracer(0)
+ 
+snake = Snake()
 
-tim = Turtle()
-tim.speed(1)
-tim.pensize(15)
+screen.listen()
 
-while(True):
-    tim.forward(20)
-    tim.left(choice([90, -90]))
+## TODO: Make the snake controllable by arrow keys 
 
-food = Turtle()
-food.fillcolor("black")
+# screen.onkeypress(snake.up(), "Up")
+# screen.onkeypress(snake.down(), "Down")
+# screen.onkeypress(snake.left(), "Left")
+# screen.onkeypress(snake.right(), "Right")
 
-food.teleport(randint(1, width), randint(1, height))
+game_is_on = True
+while game_is_on:
 
-food.begin_fill()
-food.circle(5)
-food.end_fill()
+	
+	screen.update()
+	time.sleep(0.1) ## 100ms -> 10fps
+
+	snake.move()
+	
 
 screen.exitonclick()
