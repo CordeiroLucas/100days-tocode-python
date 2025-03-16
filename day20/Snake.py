@@ -1,13 +1,6 @@
 from turtle import Turtle
 
 STARTING_POSITIONS = [(0,0), (-20,0), (-40,0)]
-
-# class GameManager:
-# 	def __init__(self):
-# 		self.score = 0
-# 		self.gameOver = False
-# 		self.
-
 class Snake:
 	segments:list[Turtle]
 
@@ -15,6 +8,7 @@ class Snake:
 		'''Initialize Snake with 3 segments'''
 		self.segments = []
 		self.__create_snake()
+		self.head = self.segments[0]
 
 	def __create_snake(self):
 		for position in STARTING_POSITIONS:		
@@ -41,18 +35,16 @@ class Snake:
 	#  Snake Controls
 
 	def up(self):
-		self.segments[0].right(90)
+		self.segments[0].setheading(90)
 
 	def down(self):
-		self.segments[0].right(270)
+		self.segments[0].setheading(270)
 		
 	def left(self):
-		self.segments[0].right(180)
+		self.segments[0].setheading(180)
 
 	def right(self):
-		self.segments[0].right(0)
+		self.segments[0].setheading(0)
 
 
 		
-
-
