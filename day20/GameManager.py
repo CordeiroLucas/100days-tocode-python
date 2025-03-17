@@ -38,14 +38,14 @@ class GameManager:
 
 			self.snake.move()
 
-			self.checkAlive()
+			self.borders_colision()
 
 		self.screen.exitonclick()
 	
 	def __gameOver(self):
 		self.game_is_on = False
 
-	def checkAlive(self):
+	def borders_colision(self):
 		screen_width = self.screen.window_width()
 		screen_height = self.screen.window_height()
 		head = self.snake.head
