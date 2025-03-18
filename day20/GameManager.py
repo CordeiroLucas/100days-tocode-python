@@ -2,6 +2,7 @@ from turtle import Screen
 
 from Snake import *
 from Food import *
+from ScoreBoard import *
 
 import time
 from random import randrange
@@ -14,6 +15,7 @@ class GameManager:
 	screen = Screen()
 	snake = Snake()
 	food = Food()
+	scoreBoard = ScoreBoard()
 
 	def __init__(self):
 		self.score = 0
@@ -42,6 +44,8 @@ class GameManager:
 		
 		while self.game_is_on:
 			self.screen.update()
+			self.scoreBoard.update(self.score)
+			
 			time.sleep(UPDATE_SPEED) 
 
 			self.snake.move()
@@ -50,7 +54,6 @@ class GameManager:
 
 			if self.snake.check_self_collision():
 				self.__gameOver()
-
 		self.screen.exitonclick()
 	
 	def __gameOver(self):
