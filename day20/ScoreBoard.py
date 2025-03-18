@@ -8,7 +8,6 @@ class ScoreBoard(Turtle):
         self.penup()
         self.goto(0, 270)
         self.write("Score: ", align="center", font=("Arial", 14, "bold"))
-        self.color("white")
     
     def update(self, score):
         self.clear()
