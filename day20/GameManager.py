@@ -44,6 +44,8 @@ class GameManager:
 		while self.game_is_on:
 			self.screen.update()
 			
+			self.scoreBoard.update_scoreboard()
+
 			time.sleep(UPDATE_SPEED) 
 
 			self.snake.move()
