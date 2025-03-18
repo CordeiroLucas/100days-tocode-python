@@ -1,6 +1,12 @@
 from turtle import Turtle
 
 STARTING_POSITIONS = [(0,0), (-20,0), (-40,0)]
+
+UP = 90
+DOWN = 270
+LEFT = 180
+RIGHT = 0
+
 class Snake:
 	segments:list[Turtle]
 
@@ -39,22 +45,22 @@ class Snake:
 	def move(self):
 		'''Move the snake head forward by 20 steps'''
 		self.__update_body()
-		self.segments[0].forward(20)
+		self.head.forward(20)
 
 	#  Snake Controls
 
 	def up(self):
-		if self.segments[0].heading() != 270:
-			self.segments[0].setheading(90)
+		if self.head.heading() != DOWN:
+			self.head.setheading(UP)
 	def down(self):
-		if self.segments[0].heading() != 90:
-			self.segments[0].setheading(270)
+		if self.head.heading() != UP:
+			self.head.setheading(DOWN)
 	def left(self):
-		if self.segments[0].heading() != 0:		
-			self.segments[0].setheading(180)
+		if self.head.heading() != RIGHT:		
+			self.head.setheading(LEFT)
 	def right(self):
-		if self.segments[0].heading() != 180:
-			self.segments[0].setheading(0)
+		if self.head.heading() != LEFT:
+			self.head.setheading(RIGHT)
 
 	def eat(self):
 		new_segment = self.__create_segment()
