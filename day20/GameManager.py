@@ -6,10 +6,14 @@ from Food import *
 import time
 from random import randrange
 
+WIDTH = 600
+HEIGHT = 600
+
 class GameManager:
 	screen = Screen()
 	snake = Snake()
 	food = Food()
+
 
 
 	def __init__(self):
@@ -19,7 +23,8 @@ class GameManager:
 		self.__setup_screen()
 
 	def __setup_screen(self):
-		self.screen.setup(width=600, height=600)
+		self.screen.setup(width=WIDTH, height=HEIGHT)
+		print(self.screen.screensize()) ################ check
 		self.screen.bgcolor("black")
 		self.screen.title("My Snake Game")
 		self.screen.tracer(0)
@@ -38,7 +43,6 @@ class GameManager:
 		self.__respawn_food()
 		
 		while self.game_is_on:
-			
 			self.screen.update()
 			time.sleep(0.1) ## 100ms -> 10fps
 
@@ -54,13 +58,15 @@ class GameManager:
 	def borders_colision(self):
 		screen_width = self.screen.window_width()
 		screen_height = self.screen.window_height()
-		head = self.snake.head
 
 		max_x = screen_width/2
 		max_y = screen_height/2
 
-		if head.xcor() > max_x or head.ycor() > max_y or head.xcor() < max_x*-1 or head.ycor() < max_y*-1:
+		head = self.snake.head
+		if head.xcor() >= max_x or head.ycor() >= max_y or head.xcor() <= max_x*-1 or head.ycor() <= max_y*-1:
 			self.__gameOver()
+			print("Game Over") ################ check
+			print(f"Score {self.score}") ################ check
 
 	def __respawn_food(self):
 		screen_width = self.screen.window_width()
@@ -75,11 +81,19 @@ class GameManager:
 		new_pos = (new_x, new_y)
 
 		self.food.spawn(new_pos)
+	
+	# Not Working Properly due to screen size problems
 
 	def check_food(self):
-		if self.food.get_pos() == self.snake.head.pos():
-			self.__respawn_food()
+		food_pos = self.food.get_pos()
+		head_pos = self.snake.head.pos()
+
+		if food_pos == head_pos:
+			print(food_pos, head_pos) ################ check
+
 			self.score += 1
-			print(self.score)
-			# self.snake.eat()
-		
+
+			print("Score: ", self.score) ################ check
+
+			self.snake.eat()
+			self.__respawn_food()
