@@ -24,7 +24,6 @@ class GameManager:
 
 	def __setup_screen(self):
 		self.screen.setup(width=WIDTH, height=HEIGHT)
-		print(self.screen.screensize()) ################ check
 		self.screen.bgcolor("black")
 		self.screen.title("My Snake Game")
 		self.screen.tracer(0)
@@ -48,7 +47,8 @@ class GameManager:
 
 			self.snake.move()
 			self.borders_colision()
-			self.check_food()
+			self.__snake_collision()
+			self.__check_food()
 
 		self.screen.exitonclick()
 	
@@ -66,7 +66,7 @@ class GameManager:
 		if head.xcor() >= max_x or head.ycor() >= max_y or head.xcor() <= max_x*-1 or head.ycor() <= max_y*-1:
 			self.__gameOver()
 			print("Game Over") ################ check
-			print(f"Score {self.score}") ################ check
+			print(f"Borders Collision") ################ check
 
 	def __respawn_food(self):
 		screen_width = self.screen.window_width()
@@ -75,8 +75,8 @@ class GameManager:
 		max_x = int(screen_width/2)
 		max_y = int(screen_height/2)
 
-		new_x = randrange(max_x * -1, max_x, 20)
-		new_y = randrange(max_y * -1, max_y, 20)
+		new_x = randrange(max_x * -1 + 20, max_x - 20, 20)
+		new_y = randrange(max_y * -1 + 20, max_y- 20, 20)
 
 		new_pos = (new_x, new_y)
 
@@ -84,16 +84,24 @@ class GameManager:
 	
 	# Not Working Properly due to screen size problems
 
-	def check_food(self):
+	def __check_food(self):
 		food_pos = self.food.get_pos()
 		head_pos = self.snake.head.pos()
 
 		if food_pos == head_pos:
-			print(food_pos, head_pos) ################ check
-
 			self.score += 1
 
 			print("Score: ", self.score) ################ check
 
 			self.snake.eat()
 			self.__respawn_food()
+	
+	def __snake_collision(self):
+		snake_seg = self.snake.segments
+
+		head = self.snake.head
+		for seg in snake_seg:
+			if seg.pos() == head.pos() and seg != head:
+				self.__gameOver()
+				print("Snake Collision") ################ check
+				return
