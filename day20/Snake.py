@@ -18,9 +18,6 @@ class Snake:
 		self.head = self.segments[0]
 		self.tail = self.segments[-1]
 
-		self.head.color("red") ################ check
-		self.tail.color("blue") ################ check
-
 	def __create_segment(self):
 		new_segment = Turtle("square")
 		new_segment.color("white")
@@ -68,12 +65,8 @@ class Snake:
 		new_segment = self.__create_segment()
 		new_segment.goto(self.tail.pos())
 
-		print("Head: ", self.head.pos()) ################ check
-		self.tail.color("white") ################ check
-
 		self.segments.append(new_segment)
 		self.tail = self.segments[-1]
-		self.tail.color("blue") ################ check
 		
 	def check_self_collision(self):
 		snake_seg = self.segments

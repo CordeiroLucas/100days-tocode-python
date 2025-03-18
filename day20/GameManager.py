@@ -68,7 +68,6 @@ class GameManager:
 		head = self.snake.head
 		if head.xcor() >= max_x or head.ycor() >= max_y or head.xcor() <= max_x*-1 or head.ycor() <= max_y*-1:
 			self.__gameOver()
-			print(f"Borders Collision") ################ check
 
 	def __respawn_food(self):
 		screen_width = self.screen.window_width()
@@ -78,7 +77,7 @@ class GameManager:
 		max_y = int(screen_height/2)
 
 		new_x = randrange(max_x * -1 + 20, max_x - 20, 20)
-		new_y = randrange(max_y * -1 + 20, max_y- 20, 20)
+		new_y = randrange(max_y * -1 + 20, max_y - 20, 20)
 
 		new_pos = (new_x, new_y)
 
@@ -96,8 +95,5 @@ class GameManager:
 		## Distance measured by pythagorean theorem
 		if (dis_x ** 2 + dis_y ** 2) ** 0.5 < 15: 
 			self.score += 1
-
-			print("Score: ", self.score) ################ check
-
 			self.snake.eat()
 			self.__respawn_food()
