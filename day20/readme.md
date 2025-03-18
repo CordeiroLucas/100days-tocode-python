@@ -4,10 +4,11 @@
 
 ### Snake
 - Basic Movement [OK]
+  - Avoid 180 turn [OK]
 - Body Follow the Head [OK]
 - Controlled by ArrowKeys [OK]
 - Detect Self-Colision [OK]
-- Eat Function [OK]
+- Eat Function [Unstable]
 
 ### Food
 - Create Food Object [OK]
