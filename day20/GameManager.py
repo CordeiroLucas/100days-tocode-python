@@ -18,7 +18,6 @@ class GameManager:
 	scoreBoard = ScoreBoard()
 
 	def __init__(self):
-		self.score = 0
 		self.game_is_on = True
 
 		self.__setup_screen()
@@ -44,7 +43,6 @@ class GameManager:
 		
 		while self.game_is_on:
 			self.screen.update()
-			self.scoreBoard.update(self.score)
 			
 			time.sleep(UPDATE_SPEED) 
 
@@ -96,6 +94,6 @@ class GameManager:
 
 		## Distance measured by pythagorean theorem
 		if (dis_x ** 2 + dis_y ** 2) ** 0.5 < 15: 
-			self.score += 1
+			self.scoreBoard.increase_score()
 			self.snake.eat()
 			self.__respawn_food()
