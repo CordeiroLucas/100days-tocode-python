@@ -8,13 +8,12 @@ from random import randrange
 
 WIDTH = 600
 HEIGHT = 600
+UPDATE_SPEED = 0.12 ## in seconds | 150ms
 
 class GameManager:
 	screen = Screen()
 	snake = Snake()
 	food = Food()
-
-
 
 	def __init__(self):
 		self.score = 0
@@ -43,7 +42,7 @@ class GameManager:
 		
 		while self.game_is_on:
 			self.screen.update()
-			time.sleep(0.1) ## 100ms -> 10fps
+			time.sleep(UPDATE_SPEED) 
 
 			self.snake.move()
 			self.borders_colision()

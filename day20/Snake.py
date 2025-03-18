@@ -2,6 +2,8 @@ from turtle import Turtle
 
 STARTING_POSITIONS = [(0,0), (-20,0), (-40,0)]
 
+MOVE_DISTANCE = 20
+
 UP = 90
 DOWN = 270
 LEFT = 180
@@ -42,7 +44,7 @@ class Snake:
 	def move(self):
 		'''Move the snake head forward by 20 steps'''
 		self.__update_body()
-		self.head.forward(20)
+		self.head.forward(MOVE_DISTANCE)
 
 	#  Snake Controls
 
