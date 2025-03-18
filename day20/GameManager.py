@@ -47,8 +47,8 @@ class GameManager:
 			time.sleep(UPDATE_SPEED) 
 
 			self.snake.move()
-			self.borders_colision()
-			self.__check_food()
+			self.__borders_colision()
+			self.__check_food_collision()
 
 			if self.snake.check_self_collision():
 				self.__gameOver()
@@ -58,7 +58,7 @@ class GameManager:
 		self.game_is_on = False
 		print("Game Over") ################ check
 
-	def borders_colision(self):
+	def __borders_colision(self):
 		screen_width = self.screen.window_width()
 		screen_height = self.screen.window_height()
 
@@ -85,7 +85,7 @@ class GameManager:
 	
 	# Not Working Properly due to screen size problems
 
-	def __check_food(self):
+	def __check_food_collision(self):
 		food_pos = self.food.get_pos()
 		head_pos = self.snake.head.pos()
 
