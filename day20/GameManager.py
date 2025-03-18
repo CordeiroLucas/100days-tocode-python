@@ -90,7 +90,11 @@ class GameManager:
 		food_pos = self.food.get_pos()
 		head_pos = self.snake.head.pos()
 
-		if food_pos == head_pos:
+		dis_x = food_pos[0] - head_pos[0]
+		dis_y = food_pos[1] - head_pos[1]
+
+		## Distance measured by pythagorean theorem
+		if (dis_x ** 2 + dis_y ** 2) ** 0.5 < 15: 
 			self.score += 1
 
 			print("Score: ", self.score) ################ check
