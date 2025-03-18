@@ -62,6 +62,8 @@ class Snake:
 		if self.head.heading() != LEFT:
 			self.head.setheading(RIGHT)
 
+	#	Snake behavior
+
 	def eat(self):
 		new_segment = self.__create_segment()
 		new_segment.goto(self.tail.pos())
@@ -73,3 +75,12 @@ class Snake:
 		self.tail = self.segments[-1]
 		self.tail.color("blue") ################ check
 		
+	def check_self_collision(self):
+		snake_seg = self.segments
+		head = self.head
+
+		for seg in snake_seg:
+			if seg.pos() == head.pos() and seg != head:
+				print("Snake Collision") ################ check
+				return True
+		return False

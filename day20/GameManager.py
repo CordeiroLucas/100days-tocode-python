@@ -47,13 +47,16 @@ class GameManager:
 
 			self.snake.move()
 			self.borders_colision()
-			self.__snake_collision()
 			self.__check_food()
+
+			if self.snake.check_self_collision():
+				self.__gameOver()
 
 		self.screen.exitonclick()
 	
 	def __gameOver(self):
 		self.game_is_on = False
+		print("Game Over") ################ check
 
 	def borders_colision(self):
 		screen_width = self.screen.window_width()
@@ -65,7 +68,6 @@ class GameManager:
 		head = self.snake.head
 		if head.xcor() >= max_x or head.ycor() >= max_y or head.xcor() <= max_x*-1 or head.ycor() <= max_y*-1:
 			self.__gameOver()
-			print("Game Over") ################ check
 			print(f"Borders Collision") ################ check
 
 	def __respawn_food(self):
@@ -95,13 +97,3 @@ class GameManager:
 
 			self.snake.eat()
 			self.__respawn_food()
-	
-	def __snake_collision(self):
-		snake_seg = self.snake.segments
-
-		head = self.snake.head
-		for seg in snake_seg:
-			if seg.pos() == head.pos() and seg != head:
-				self.__gameOver()
-				print("Snake Collision") ################ check
-				return
