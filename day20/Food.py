@@ -11,6 +11,6 @@ class Food:
 	def spawn(self, pos):
 		self.food.goto(pos)
 		self.food.showturtle()
-	
+
 	def get_pos(self):
 		return self.food.pos()
