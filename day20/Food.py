@@ -1,16 +1,18 @@
 from turtle import Turtle
 
-class Food:
+class Food(Turtle):
 	def __init__(self):
-		self.food = Turtle("circle")
-		self.food.penup()
-		self.food.shapesize(0.5, 0.5)
-		self.food.color("blue")
-		self.food.hideturtle()
+		super().__init__()
+		self.shape("circle")
+		self.penup()
+		self.shapesize(0.5, 0.5)
+		self.color("blue")
+		self.hideturtle()
+		self.speed("fastest")
 
 	def spawn(self, pos):
-		self.food.goto(pos)
-		self.food.showturtle()
+		self.goto(pos)
+		self.showturtle()
 
 	def get_pos(self):
-		return self.food.pos()
+		return self.pos()
