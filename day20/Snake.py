@@ -8,13 +8,22 @@ class Snake:
 		'''Initialize Snake with 3 segments'''
 		self.segments = []
 		self.__create_snake()
+
 		self.head = self.segments[0]
+		self.tail = self.segments[-1]
+
+		self.head.color("red") ################ check
+		self.tail.color("blue") ################ check
+
+	def __create_segment(self):
+		new_segment = Turtle("square")
+		new_segment.color("white")
+		new_segment.penup()
+		return new_segment
 
 	def __create_snake(self):
 		for position in STARTING_POSITIONS:		
-			new_segment = Turtle("square")
-			new_segment.color("white")
-			new_segment.penup()
+			new_segment = self.__create_segment()
 			new_segment.goto(position)
 			self.segments.append(new_segment)
 
@@ -42,3 +51,15 @@ class Snake:
 		self.segments[0].setheading(180)
 	def right(self):
 		self.segments[0].setheading(0)
+
+	def eat(self):
+		new_segment = self.__create_segment()
+		new_segment.goto(self.tail.pos())
+
+		print("Head: ", self.head.pos()) ################ check
+		self.tail.color("white") ################ check
+
+		self.segments.append(new_segment)
+		self.tail = self.segments[-1]
+		self.tail.color("blue") ################ check
+		
