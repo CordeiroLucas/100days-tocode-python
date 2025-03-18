@@ -6,21 +6,23 @@
 - Basic Movement [OK]
 - Body Follow the Head [OK]
 - Controlled by ArrowKeys [OK]
+- Detect Self-Colision [OK]
+- Eat Function [OK]
+
+### Food
+- Create Food Object [OK]
 
 ### Game
 - Detect borders collision [OK]
 - Throw Game Over Function [OK]
+- Spawn Food [OK]
+  - When Eaten respawn [OK]
 
 ## TO-DO
 
 ### Snake
-- Detect Self-Colision
-- Eat Function (Destroy Food and Increase Snake and Score by 1)
 
 ### Food
-- Create Food Object
 
 ### Game
-- Spawn Food
-  - When Eaten respawn
 - Create Score Display
