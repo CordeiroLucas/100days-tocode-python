@@ -71,11 +71,11 @@ class Snake:
 		self.tail = self.segments[-1]
 		
 	def check_self_collision(self):
-		snake_seg = self.segments
+		snake_tail = self.segments[1:-1]
 		head = self.head
 
-		for seg in snake_seg:
-			if seg.pos() == head.pos() and seg != head:
+		for seg in snake_tail:
+			if head.distance(seg) < 10:
 				print("Snake Collision") ################ check
 				return True
 		return False
