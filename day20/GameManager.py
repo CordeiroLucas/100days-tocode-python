@@ -58,6 +58,7 @@ class GameManager:
 	
 	def __gameOver(self):
 		self.game_is_on = False
+		self.scoreBoard.game_over()
 		print("Game Over") ################ check
 
 	def __borders_colision(self):
