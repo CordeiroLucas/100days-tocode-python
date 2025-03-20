@@ -18,6 +18,8 @@
 - Throw Game Over Function [OK]
 - Spawn Food [OK]
   - When Eaten respawn [OK]
+- Create Score Display [OK]
+- Create Game Over Display [OK]
 
 ## TO-DO
 
@@ -26,4 +28,3 @@
 ### Food
 
 ### Game
-- Create Score Display
