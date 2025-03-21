@@ -1,6 +1,7 @@
 from turtle import Turtle
 
-
+MAX_Y = 230
+MAX_X = 350
 
 class Paddle(Turtle):
 	def __init__(self, isPlayer = False):
@@ -9,15 +10,16 @@ class Paddle(Turtle):
 		self.penup()
 		self.color("white") 
 		self.isPlayer = isPlayer
+		
 		if self.isPlayer:
-			self.goto(-350, 0)
-		else: self.goto(350,0)
+			self.goto(-MAX_X, 0)
+		else: self.goto(MAX_X,0)
 
 	def up(self):
-		if self.ycor() < 230:
+		if self.ycor() < MAX_Y:
 			self.goto(self.xcor(), self.ycor() + 20)
 	
 	def down(self):
-		if self.ycor() > -230:
+		if self.ycor() > -MAX_Y:
 			self.goto(self.xcor(), self.ycor() - 20)
-		
+	
