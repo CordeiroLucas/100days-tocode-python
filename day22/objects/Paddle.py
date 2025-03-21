@@ -4,22 +4,21 @@ MAX_Y = 230
 MAX_X = 350
 
 class Paddle(Turtle):
-	def __init__(self, isPlayer = False):
+	def __init__(self, position):
 		super().__init__("square")
-		self.turtlesize(4,0.75)
+		self.screen.tracer(0)
+		self.turtlesize(5,1)
 		self.penup()
 		self.color("white") 
-		self.isPlayer = isPlayer
-		
-		if self.isPlayer:
-			self.goto(-MAX_X, 0)
-		else: self.goto(MAX_X,0)
+		self.goto((position))
 
 	def up(self):
 		if self.ycor() < MAX_Y:
 			self.goto(self.xcor(), self.ycor() + 20)
+		self.screen.update()
 	
 	def down(self):
 		if self.ycor() > -MAX_Y:
 			self.goto(self.xcor(), self.ycor() - 20)
+		self.screen.update()
 	

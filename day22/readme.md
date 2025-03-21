@@ -13,9 +13,9 @@
   
 ## TODO
 
-- Create the Screen
-- Create and move the paddle
-- Create another paddle
+- Create the Screen [0K]
+- Create and move the paddle [OK]
+- Create another paddle [OK]
 - Create the Ball and make it Move
 - Detect Collision with Wall and Bounce
 - Detect Collision with Paddle
