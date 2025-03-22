@@ -42,11 +42,7 @@ class GameManager:
 		self.__respawn_food()
 		
 		while self.game_is_on:
-			self.screen.update()
-			
 			self.scoreBoard.update_scoreboard()
-
-			time.sleep(UPDATE_SPEED) 
 
 			self.snake.move()
 			self.__borders_colision()
@@ -54,7 +50,10 @@ class GameManager:
 
 			if self.snake.check_self_collision():
 				self.__gameOver()
+			
+			self.screen.update()
 		self.screen.exitonclick()
+		time.sleep(UPDATE_SPEED)
 	
 	def __gameOver(self):
 		self.game_is_on = False
