@@ -44,6 +44,8 @@ class GameManager:
 		while self.game_is_on:
 			self.scoreBoard.update_scoreboard()
 
+			time.sleep(UPDATE_SPEED)
+
 			self.snake.move()
 			self.__borders_colision()
 			self.__check_food_collision()
@@ -53,7 +55,6 @@ class GameManager:
 			
 			self.screen.update()
 		self.screen.exitonclick()
-		time.sleep(UPDATE_SPEED)
 	
 	def __gameOver(self):
 		self.game_is_on = False
