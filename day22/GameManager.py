@@ -9,7 +9,7 @@ class GameManager:
 	ball = Ball()
 	l_paddle = Paddle((-350, 0))
 	r_paddle = Paddle((350, 0))
-	# ScoreBoard = ScoreBoard()
+	scoreBoard = ScoreBoard()
 
 	screen.listen()
 	screen.onkeypress(l_paddle.up, "w")
@@ -27,7 +27,13 @@ class GameManager:
 	
 	def run(self):
 		while(self.game_is_on):
+			self.scoreBoard.display()
+			self.__paddle_collision()
 			self.ball.run()
 			self.screen.update()
 			time.sleep(0.05)
 		self.screen.exitonclick()
+	
+	def __paddle_collision(self):
+		self.ball.check_collision(self.l_paddle)
+		self.ball.check_collision(self.r_paddle)

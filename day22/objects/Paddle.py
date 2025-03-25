@@ -19,4 +19,3 @@ class Paddle(Turtle):
 	def down(self):
 		if self.ycor() > -MAX_Y + 20:
 			self.goto(self.xcor(), self.ycor() - 20)
-	
