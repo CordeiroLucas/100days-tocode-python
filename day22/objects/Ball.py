@@ -9,21 +9,26 @@ class Ball(Turtle):
 		self.screen.tracer(0)
 		self.penup()
 		self.color("white")
-		self.seth(45)
+		self.seth(135)
 		print(self.heading())
 	
-	def move(self):
+	def run(self):
 		self.__wall_bounce()
+		self.__move()
+
+	def __move(self):
 		self.forward(self.speed)
 
 	def __wall_bounce(self):
 		if (self.ycor() >= MAX_Y or self.ycor() <= -MAX_Y):
-			match (self.heading()):
+			heading = self.heading()
+			match (heading):
 				case 315:
-					self.seth(45)
+					heading += 90
 				case 45:
-					self.seth(315)
+					heading -= 90
 				case 135:
-					self.seth(225)
+					heading += 90
 				case 225:
-					self.seth(135)
+					heading -= 90
+			self.seth(heading)

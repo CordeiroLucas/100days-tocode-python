@@ -27,7 +27,7 @@ class GameManager:
 	
 	def run(self):
 		while(self.game_is_on):
-			self.ball.move()
+			self.ball.run()
 			self.screen.update()
 			time.sleep(0.05)
 		self.screen.exitonclick()
