@@ -37,3 +37,15 @@ class GameManager:
 	def __paddle_collision(self):
 		self.ball.check_collision(self.l_paddle)
 		self.ball.check_collision(self.r_paddle)
+
+		if self.ball.xcor() <= -380 or self.ball.xcor() >= 380:
+			if self.ball.xcor() < -380:
+				self.scoreBoard.point(1)
+			else:
+				self.scoreBoard.point(0)
+			self.ball.goto(0, 0)
+			self.ball.seth(135)
+			self.increment_speed()
+		
+	def increment_speed(self):
+		self.ball.speed += 1

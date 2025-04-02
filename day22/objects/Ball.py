@@ -34,6 +34,6 @@ class Ball(Turtle):
 			self.seth(heading)
 
 	def check_collision(self, paddle):
-		if self.distance(paddle) < 15:
+		if self.distance(paddle) < 40 and (paddle.xcor() >= 320 or paddle.xcor() < -320):
 			self.seth(self.heading()+90)
-			print(self.heading())
+		
