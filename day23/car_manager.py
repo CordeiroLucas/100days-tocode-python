@@ -1,8 +1,6 @@
 from gameObject import GameObject
 from random import choice, randrange
-from time import sleep
 
-ch = [False, False, True, False]
 COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
 STARTING_MOVE_DISTANCE = 5
 MOVE_INCREMENT = 5
@@ -33,7 +31,7 @@ class CarManager:
     def spawnManager(self):
         self.spawn_limit = 16
 
-        if len(self.cars) <= self.spawn_limit and choice(ch):
+        if len(self.cars) <= self.spawn_limit:
             self.spawn()
     
     def moveCars(self):

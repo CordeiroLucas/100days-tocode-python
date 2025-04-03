@@ -22,12 +22,11 @@ game_is_on = True
 frame = 0
 
 while game_is_on:
-    time.sleep(0.1)
     frame+=1
     screen.update()
     score.display()
 
-    if (frame == 3):
+    if (frame == 6):
         carManager.spawnManager()
         frame = 0
     
@@ -41,5 +40,7 @@ while game_is_on:
         game_is_on = False
         score.game_over()
         print("Collision")
+    
+    time.sleep(0.1)
 
 screen.exitonclick()
