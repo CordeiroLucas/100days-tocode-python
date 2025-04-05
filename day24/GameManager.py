@@ -56,9 +56,9 @@ class GameManager:
 	
 	def __gameOver(self):
 		self.game_is_on = False
+		print("Game Over")
 		self.scoreBoard.game_over()
-		sleep(2)
-		print("Game Over") ################ check
+		
 
 	def reset_game(self):
 		self.snake.reset_snake()
