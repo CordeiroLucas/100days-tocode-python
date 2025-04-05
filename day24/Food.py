@@ -16,3 +16,6 @@ class Food(Turtle):
 
 	def get_pos(self):
 		return self.pos()
+
+	def reset_food(self):
+		self.hideturtle()

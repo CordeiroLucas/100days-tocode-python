@@ -4,7 +4,7 @@ from Snake import *
 from Food import *
 from ScoreBoard import *
 
-import time
+from time import sleep
 from random import randrange
 
 WIDTH = 600
@@ -44,7 +44,7 @@ class GameManager:
 		while self.game_is_on:
 			self.scoreBoard.update_scoreboard()
 
-			time.sleep(UPDATE_SPEED)
+			sleep(UPDATE_SPEED)
 
 			self.snake.move()
 			self.__borders_colision()
@@ -52,14 +52,23 @@ class GameManager:
 
 			if self.snake.check_self_collision():
 				self.__gameOver()
-			
 			self.screen.update()
-		self.screen.exitonclick()
 	
 	def __gameOver(self):
 		self.game_is_on = False
 		self.scoreBoard.game_over()
+		sleep(2)
 		print("Game Over") ################ check
+
+	def reset_game(self):
+		self.snake.reset_snake()
+		self.scoreBoard.reset_scoreboard()
+		self.food.reset_food()
+
+		self.__respawn_food()
+
+		self.game_is_on = True
+		self.run()
 
 	def __borders_colision(self):
 		screen_width = self.screen.window_width()

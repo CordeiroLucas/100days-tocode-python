@@ -1,6 +1,10 @@
 from GameManager import *
  
 gameManager = GameManager()
-gameManager.run()
 
+while True:
+    gameManager.run()
+    gameManager.reset_game()
+
+gameManager.screen.exitonclick()
 ############################################################

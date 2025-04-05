@@ -46,6 +46,16 @@ class Snake:
 		self.__update_body()
 		self.head.forward(MOVE_DISTANCE)
 
+	def reset_snake(self):
+		'''Reset the snake to its initial position'''
+		for seg in self.segments:
+			seg.goto(1000, 1000)
+		self.segments.clear()
+		self.__create_snake()
+
+		self.head = self.segments[0]
+		self.tail = self.segments[-1]
+
 	#  Snake Controls
 
 	def up(self):
