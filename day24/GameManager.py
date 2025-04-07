@@ -40,6 +40,8 @@ class GameManager:
 
 	def run(self):
 		self.__respawn_food()
+
+		self.scoreBoard.high_score = self.get_highscore()
 		
 		while self.game_is_on:
 			self.scoreBoard.update_scoreboard()
@@ -64,6 +66,8 @@ class GameManager:
 		self.snake.reset_snake()
 		self.scoreBoard.reset_scoreboard()
 		self.food.reset_food()
+
+		self.save_highscore(self.scoreBoard.high_score)
 
 		self.__respawn_food()
 
@@ -109,3 +113,11 @@ class GameManager:
 			self.scoreBoard.increase_score()
 			self.snake.eat()
 			self.__respawn_food()
+
+	def save_highscore(self, score):
+		with open("highscores.txt", "w") as f:
+			f.write(str(score))
+		
+	def get_highscore(self):
+		with open("highscores.txt", "r") as f:
+			return int(f.read())
