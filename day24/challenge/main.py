@@ -10,10 +10,10 @@
 with open("Input/Names/invited_names.txt") as name_file:
     names = name_file.read().splitlines()
 
-    with open("Input/Letters/starting_letter.txt") as file:
-        raw_file = file.read()
-        for name in names:
-            new_file = raw_file.replace("[name]", name)
+with open("Input/Letters/starting_letter.txt") as file:
+    raw_file = file.read()
+    for name in names:
+        new_file = raw_file.replace("[name]", name)
 
-            with open(f"Output/ReadyToSend/letter_for_{name}.txt", "w") as output:
-                output.write(new_file)
+        with open(f"Output/ReadyToSend/letter_for_{name}.txt", "w") as output:
+            output.write(new_file)
