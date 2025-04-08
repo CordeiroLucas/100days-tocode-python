@@ -12,4 +12,15 @@
 import pandas
 
 data = pandas.read_csv("weather_data.csv")
-print(data["temp"])
+
+# media_temp = data.temp.mean()
+# max_value = data.temp.max()
+# print(max_value)
+# print(f"{media_temp:.2f}")
+
+monday = data[data.day == "Monday"]
+
+f = monday.temp * 1.8 + 32
+
+print(str(f))
+
