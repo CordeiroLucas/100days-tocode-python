@@ -17,32 +17,38 @@ total_states = data.count().state
 current_score = 0
 game_is_on = True
 while game_is_on:
-	guess = screen.textinput("Guess the US States", "Type a State")
-
-	print(guess)
-
-	index_found = data.loc[data.state == guess] # Search By State Name and Return its Index
-
+	guess = screen.textinput(f"{current_score}/50 | Guess the US States", "Type a State")
 	
-	if not index_found.empty:
-		index_found = index_found.index[0]
+	all_states = data.state.to_list()
+	states_guessed = []
+
+	if guess in all_states:
+		index_found = data.loc[data.state == guess].index[0] # Search By State Name and Return its Index
 		print(index_found)
 
 		state_coord = (float(data.x[index_found]), float(data.y[index_found]))
 
-		print("Infos: ")
-		print(data.state[index_found])
-		print(data.x[index_found])
-		print(data.y[index_found])
-
 		turtle.goto(state_coord)
 		turtle.write(data.state[index_found])
+
 		current_score+=1
-	else:
+		states_guessed.append(data.state[index_found])
+
+	if guess.lower() == "exit":
+		print("Saindo do Programa")
+
+		missing_states = []
+		for state in all_states:
+			if state not in states_guessed:
+				missing_states.append(state)
+		break
+
+	if guess not in all_states:
 		print("Errouu")
 		game_is_on = False
-	print(f"{current_score}/{total_states}")
 
 ###################
+
+print(missing_states)
 
 screen.exitonclick()
