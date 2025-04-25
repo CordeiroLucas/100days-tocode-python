@@ -11,14 +11,12 @@ turtle = Turtle()
 turtle.penup()
 turtle.hideturtle()
 
-
 #################
 total_states = data.count().state
 current_score = 0
 
 states_guessed = []
 missing_states = []
-
 
 game_is_on = True
 while game_is_on:
@@ -53,9 +51,7 @@ while game_is_on:
 
 print(states_guessed)
 
-for state in all_states:
-	if state not in states_guessed:
-		missing_states.append(state)
+missing_states = [state for state in all_states if state not in states_guessed]
 
 new_data = pd.DataFrame(missing_states)
 new_data.to_csv("states_to_learn.csv")
